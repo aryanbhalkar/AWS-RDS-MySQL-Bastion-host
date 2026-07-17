@@ -1,7 +1,3 @@
-Absolutely! Below is a **professional, detailed GitHub project documentation** that you can use in your **README.md** or in the `docs/project-overview.md` file. It explains the project, architecture, workflow, implementation steps, security, and learning outcomes in a way that is suitable for recruiters, hiring managers, and anyone exploring your GitHub portfolio.
-
----
-
 # Secure Amazon RDS MySQL Access Using an EC2 Bastion Host (Jump Server)
 
 ## Project Overview
