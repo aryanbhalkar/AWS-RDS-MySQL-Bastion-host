@@ -1,0 +1,50 @@
+Following commands helped me to execute my project successfully.
+
+
+ssh -i "rds-bastion-key.pem" ec2-user@BASTION-PUBLIC-IP
+------------------------------------------------------------------------
+icacls.exe .\rds-bastion-key.pem /reset
+icacls.exe .\rds-bastion-key.pem /grant:r "$($env:USERNAME):(R)"
+icacls.exe .\rds-bastion-key.pem /inheritance:r
+----------------------------------------------------------------------
+nslookup portfolio-mysql-db.abc123xyz.ap-south-1.rds.amazonaws.com
+--------------------------------------------------------------------------------------
+getent hosts portfolio-mysql-db.abc123xyz.ap-south-1.rds.amazonaws.com
+---------------------------------------------------------------------------------------------------
+timeout 5 bash -c '</dev/tcp/RDS-ENDPOINT/3306' && echo "Port 3306 reachable" || echo "Connection failed"
+-----------------------------------------------------------------------------------------------------------
+mysql -h RDS-ENDPOINT -P 3306 -u admin -p
+-------------------------------------------------
+SHOW DATABASES;
+-------------------------
+USE portfolio_db;
+------------------------------
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_name VARCHAR(100) NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    job_role VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+---------------------------------------------------------------------------
+INSERT INTO employees
+(employee_name, department, job_role, email)
+VALUES
+('Aryan Bhalkar', 'Cloud Engineering', 'Cloud Intern', 'aryan@example.com'),
+('Rahul Sharma', 'DevOps', 'DevOps Engineer', 'rahul@example.com'),
+('Sneha Patil', 'FinOps', 'FinOps Analyst', 'sneha@example.com');
+
+------------------------------------------------------------
+SELECT * FROM employees;
+
+---------------------------------------------------------------
+SELECT employee_name, job_role
+FROM employees
+WHERE department = 'Cloud Engineering';
+---------------------------------------------------
+DESCRIBE employees;
+--------------------------------------------------------
+EXIT;
+
+----------------------------------------------------------
